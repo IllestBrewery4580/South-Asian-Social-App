@@ -40,3 +40,45 @@ body {
     margin-right: 10px;
     cursor: pointer;
 }
+
+.profile-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.profile-avatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.live-stream-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.live-stream-card button {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background: linear-gradient(90deg, #ffbf61, #ffb347);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.profile-page {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
