@@ -11,4 +11,8 @@ Community Guidelines
 - Safe Content
   = Sharing harmful, graphic, or illegal content is prohibited. Keep discussions and media appropriate for the community.
 - Enforcement
+<<<<<<< HEAD
   = Violations may result in warnings, content removal, temporary suspension, or permanent ban depending on severity.
+=======
+  = Violations may result in warnings, content removal, temporary suspension, or permanent ban depending on severity.
+>>>>>>> d7e41ed (Initial commit: social media frontend with Navbar, Home, PostCard, and Indian-inspired design)
