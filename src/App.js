@@ -7,13 +7,19 @@ import Live from './pages/Live.js'
 import Profile from './pages/Profile.js'
 import Register from './components/Register.js'
 import Settings from './components/Settings.js'
+import Sidebar from './components/Sidebar.js';
+import DM from './pages/DM.js';
 
 // Components
 import Navbar from './components/Navbar.js'
 
 export default function App() {
   const [page, setPage] = useState('home')
-  const navigate = (target) => setPage(target)
+  const [viewedUser, setViewedUser] = useState(null); // null = your profile, string = other user
+  const navigate = (target, user = null) => {
+    setPage(target)
+    setViewedUser(user); // set the user when visiting their profile
+  };
 
   let currentPage
   if (page === 'home') currentPage = React.createElement(Home, { navigate })
@@ -21,6 +27,7 @@ export default function App() {
   else if (page === 'profile') currentPage = React.createElement(Profile, { navigate })
   else if (page === 'register') currentPage = React.createElement(Register, { navigate })
   else if (page === 'settings') currentPage = React.createElement(Settings, { navigate })
+  else if (page === 'dm') currentPage = React.createElement(DM, { navigate });
   return React.createElement(
     'div',
     { className: 'app-container', style: { paddingTop: '60px' } }, // South Asian styled background

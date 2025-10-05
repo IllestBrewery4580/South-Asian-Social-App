@@ -11,7 +11,8 @@ const Navbar = () => {
             { className: 'nav-links', style: { display: 'flex', gap: '10px' } },
             React.createElement('button', null, 'Home'),
             React.createElement('button', null, 'Profile'),
-            React.createElement('button', null, 'Go Live')
+            React.createElement('button', null, 'Go Live'),
+            React.createElement('button', { onClick: () => navigate('profile') }, 'Direct Messages')
         )
     );
 };

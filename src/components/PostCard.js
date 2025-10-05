@@ -5,6 +5,7 @@ function PostCard(props) {
     const user = props.user;
     const content = props.content;
     const image = props.image;
+    const onDm = props.onDm; // function passed from parent to handle DMs
 
     const children = [
         React.createElement('h3', { key: 'user' }, props.user),
@@ -22,7 +23,12 @@ function PostCard(props) {
             'div',
             { key: 'actions', className: 'post-actions' },
             React.createElement('button', { key: 'like' }, 'Like'),
-            React.createElement('button', { key: 'comment' }, 'Comment')
+            React.createElement('button', { key: 'comment' }, 'Comment'),
+            React.createElement(
+                'button',
+                { key: 'dm', onClick: () => onDm && onDM(user) }, // trigger DM if function exists
+                'Message'
+            )
         )
     );
 
