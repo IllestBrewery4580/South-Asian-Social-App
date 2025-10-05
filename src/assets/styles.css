@@ -1,3 +1,8 @@
+/* Push main content below navbar */
+.app-container {
+    padding-top: 80px; /* slightly more than navbar height to avoid overlap */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #fff7f0; /* soft warm background */
@@ -8,6 +13,7 @@ body {
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -15,7 +21,9 @@ body {
     background: linear-gradient(90deg, #ff6f61, #ffb347);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
-    padding: 10px 30px;
+    padding: 0px 20px;
+    height: 60px; 
+    box-sizing: border-box; /* ensures padding is inside width */
 }
 
 .navbar h2 {
@@ -28,6 +36,16 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
+    white-space: nowrap; /* prevents text from wrapping */
+    flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap; /* keep buttons in a row */
+    align-items: center;
 }
 
 .nav-links button {
@@ -37,6 +55,39 @@ body {
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+/* Responsive: tablet and mobile*/
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column ; /* stack logo and buttons */
+        align-items: flex-start;
+        height: auto; /* let it grow */
+        padding: 10px 20px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .nav-links button {
+        margin-left: 0;
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-links button {
+        font-size: 0.9rem;
+        padding: 5px 8px;
+    }
 }
 
 .post-card {

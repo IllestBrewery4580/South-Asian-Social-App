@@ -23,28 +23,30 @@ export default function App() {
   else if (page === 'settings') currentPage = React.createElement(Settings, { navigate })
   return React.createElement(
     'div',
-    { className: 'app-container', style: { paddingTop: '60px', textAl} }, // South Asian styled background
+    { className: 'app-container', style: { paddingTop: '60px' } }, // South Asian styled background
 
     // Navbar
     React.createElement(
       'nav',
-      { style: { display: 'flex', justifyContent: 'space-betwween', padding: '10px 20px', background: '#f4f4f4' } },
+      { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', background: '#f4f4f4' } },
       React.createElement('h2', null, 'Uma Social'),
       React.createElement(
         'div',
         null,
-        React.createElement('a', { href: '#', style: { marginRight: '15px' } }, 'Home'),
-        React.createElement('a', { href: '#', style: { marginRight: '15px' } }, 'Explore'),
-        React.createElement('a', { href: '#' }, 'Profile')
+        React.createElement('button', { onClick: () => navigate('home'), style: { marginRight: '10px' } }, 'Home'),
+        React.createElement('button', { onClick: () => navigate('live'), style: { marginRight: '10px' } }, 'Explore'),
+        React.createElement('button', { onClick: () => navigate('profile') }, 'Profile')
       )
     ),
 
     // Main content
+    React.createElement('main', { style: { marginTop: '20px'} }, currentPage),
+
+    // Footer with copyright
     React.createElement(
-      'main',
-      { style: { marginTop: '40px' } },
-      React.createElement('h1', null, 'Welcome to Uma Social Media!'),
-      React.createElement('p', null, 'A South Asian community platform for fans and artists.')
+      'footer',
+      { style: { textAlign: 'center', marginTop: '40px', color: '#555' } }, 
+      '\u00A9 2025 Uma Social. All rights reserved.'
     )
-  )
+  );
 }
