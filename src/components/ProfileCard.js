@@ -1,21 +1,21 @@
 import React from 'react';
 
-// ProfileCard component displays user info with avatar, name, bio, and a follow button
-function ProfileCard({ user, avatar, bio }) {
-    return (
-        <div className="profile-card">
-            {/* User avatar */}
-            <img src={avatar || 'https://via.placeholder.com/100'} alt={user} className="profile-avatar" />
+function ProfileCard(props) {
+    const user = props.user;
+    const avatar = props.avatar || 'https://via.placeholder.com/100';
+    const bio = props.bio || 'This user has no bio yet.';
 
-            {/* User name */}
-            <h3>{user}</h3>
-
-            {/* User bio */}
-            <p>{bio || 'This user has no bio yet.'}</p>
-
-            {/* Follow button */}
-            <button>Follow</button>
-        </div>
+    return React.createElement(
+        'div',
+        { className: 'profile-card' },
+        // User avatar
+        React.createElement('img', { src: avatar, alt: user, className: 'profile-avatar' }),
+        // User name
+        React.createElement('h3', null, user),
+        // User bio
+        React.createElement('p', null, bio),
+        // Follow button
+        React.createElement('button', null, 'Follow')
     );
 }
 

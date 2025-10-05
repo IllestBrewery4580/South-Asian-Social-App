@@ -1,21 +1,22 @@
 import React from 'react';
 
 // LiveStream component shows information about a live broadcast
-function LiveStream({ user, streamTitle, viewers }) {
-    return (
-        <div className="live-stream-card">
-            {/* Stream title with red live indicator */}
-            <h3>🔴 {streamTitle}</h3>
+function LiveStream(props) {
+    const user = props.user;
+    const streamTitle = props.streamTitle;
+    const viewers = props.viewers || 0;
 
-            {/* Host name */}
-            <p>Hosted by: {user}</p>
-
-            {/* Number of viewers */}
-            <p>Viewers: {viewers || 0}</p>
-
-            {/* Button to join live stream */}
-            <button>Join Live</button>
-        </div>
+    return React.createElement(
+        'div',
+        { className: 'live-stream-card' },
+        // Stream title with red live indicator
+        React.createElement('h3', null, '🔴 ', streamTitle),
+        // Host name
+        React.createElement('p', null, 'Hosted by: ', user),
+        // Number of viewers
+        React.createElement('p', null, 'Viewers: ', viewers),
+        // Button to join live stream
+        React.createElement('button', null, 'Join Live')
     );
 }
 

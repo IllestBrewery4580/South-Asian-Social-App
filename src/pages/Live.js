@@ -9,13 +9,12 @@ function Live() {
         { user: 'Sana', streamTitle: 'Live Dance Session 💃', viewers: 85 }
     ];
 
-    return (
-        <div className="live-page">
-            {/* Render each live stream using LiveStream component */}
-            {liveStreams.map((stream, index) => (
-                <LiveStream key={index} {...stream} />
-            ))}
-        </div>
+    return React.createElement(
+        'div',
+        { className: 'live-page' },
+        liveStreams.map((stream, index) =>
+            React.createElement(LiveStream, { key: index, ...stream })
+        )
     );
 }
 

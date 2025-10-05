@@ -11,10 +11,9 @@ function Profile() {
     };
 
     return (
-        <div className="profile-page">
-            {/* Render ProfileCard component with user data */}
-            <ProfileCard {...userData} />
-        </div>
+        'div', // HTML tag
+        { className: 'profile-page' }, // props
+        React.createElement(ProfileCard, userData) // child component
     );
 }
 

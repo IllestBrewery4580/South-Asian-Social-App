@@ -1,16 +1,18 @@
-import React from 'reaact';
-import './styles.css';
+import React from 'react';
+import '../assets/styles.css';
 
 const Navbar = () => {
-    return (
-        <nav className="navbar">
-            <h1 className="logo">Uma</h1>
-            <div className="nav-links">
-                <button>Home</button>
-                <button>Profile</button>
-                <button>Go Live</button>            
-            </div>
-        </nav>
+    return React.createElement(
+        'nav',
+        { className: 'navbar' },
+        React.createElement('h1', { className: 'logo' }, 'Uma'),
+        React.createElement(
+            'div',
+            { className: 'nav-links' },
+            React.createElement('button', null, 'Home'),
+            React.createElement('button', null, 'Profile'),
+            React.createElement('button', null, 'Go Live')
+        )
     );
 };
 

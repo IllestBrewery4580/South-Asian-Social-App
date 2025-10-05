@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Pages
+import Home from './pages/Home.js'
+import Live from './pages/Live.js'
+import Profile from './pages/Profile.js'
+import Register from './components/Register.js'
+import Settings from './components/Settings.js'
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+// Components
+import Navbar from './components/Navbar.js'
+
+export default function App() {
+  const [page, setPage] = useState('home')
+  const navigate = (target) => setPage(target)
+
+  let currentPage
+  if (page === 'home') currentPage = React.createElement(Home, { navigate })
+  else if (page === 'live') currentPage = React.createElement(Live, { navigate })
+  else if (page === 'profile') currentPage = React.createElement(Profile, { navigate })
+  else if (page === 'register') currentPage = React.createElement(Register, { navigate })
+  else if (page === 'settings') currentPage = React.createElement(Settings, { navigate })
+  return React.createElement(
+    'div',
+    { className: 'app-container', style: { paddingTop: '60px', textAl} }, // South Asian styled background
+
+    // Navbar
+    React.createElement(
+      'nav',
+      { style: { display: 'flex', justifyContent: 'space-betwween', padding: '10px 20px', background: '#f4f4f4' } },
+      React.createElement('h2', null, 'Uma Social'),
+      React.createElement(
+        'div',
+        null,
+        React.createElement('a', { href: '#', style: { marginRight: '15px' } }, 'Home'),
+        React.createElement('a', { href: '#', style: { marginRight: '15px' } }, 'Explore'),
+        React.createElement('a', { href: '#' }, 'Profile')
+      )
+    ),
+
+    // Main content
+    React.createElement(
+      'main',
+      { style: { marginTop: '40px' } },
+      React.createElement('h1', null, 'Welcome to Uma Social Media!'),
+      React.createElement('p', null, 'A South Asian community platform for fans and artists.')
+    )
   )
 }
-
-export default App

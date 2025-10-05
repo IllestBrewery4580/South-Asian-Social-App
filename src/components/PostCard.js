@@ -1,18 +1,32 @@
 import React from 'react';
-import './styles.css';
+import '../assets/styles.css';
 
-const PostCard = ({ user, content, image }) => {
-    return (
-        <div className="post-card">
-            <h3>{user}</h3>
-            <p>{content}</p>
-            {image && <img src={image} alt="post" />}
-            <div className="post-actions">
-                <button>Like</button>
-                <button>Comment</button>
-            </div>
-        </div>
+function PostCard(props) {
+    const user = props.user;
+    const content = props.content;
+    const image = props.image;
+
+    const children = [
+        React.createElement('h3', { key: 'user' }, props.user),
+        React.createElement('p', { key: 'content' }, props.content),
+    ];
+
+    if (props.image) {
+        children.push(
+            React.createElement('img', { key: 'image', src: props.image, alt: 'post' })
+        );
+    }
+
+    children.push(
+        React.createElement(
+            'div',
+            { key: 'actions', className: 'post-actions' },
+            React.createElement('button', { key: 'like' }, 'Like'),
+            React.createElement('button', { key: 'comment' }, 'Comment')
+        )
     );
-};
+
+    return React.createElement('div', { className: 'post-card' }, children);
+}
 
 export default PostCard;
