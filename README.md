@@ -51,7 +51,7 @@ src/
 
 
 ## Installation
-    1. Clone the repository:
+1. Clone the repository:
     ```bash
     git clone https://github.com/IllestBrewery4580/South-Asian-Social-App.git
     cd South-Asian-Social-App
