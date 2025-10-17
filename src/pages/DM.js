@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../assets/styles.css';
 
 export default function DM({ navigate }) {
@@ -6,11 +6,30 @@ export default function DM({ navigate }) {
     const [messageInput, setMessageInput] = useState('');
     const [messages, setMessages] = useState({}); // { username: [(text, fromMe)] }
 
-    const users = ['Ananya', 'Raj', 'Kiran']; // Example users
+    const users = [
+        { username: 'Ananya', followers: [], settings: { allowMessages: true } },
+        { username: 'Raj', followers: [], settings: { allowMessages: true } },
+        { username: 'Kiran', followers: [], settings: { allowMessages: true } },
+    ]; // Example users
+
     const messagesEndRef = useRef(null);
 
     const sendMessage = () => {
         if (!selectedUser || !messageInput) return;
+
+        const user = users.find(u => u.username === selectedUser);
+        const currentUsername = 'You'; // replace with logged-in user
+
+        const youFollowThem = user.followers.includes(currentUsername);
+        const theyFollowYou = false; // replace with logic if you track who you follow
+        const canMessage = theyFollowYou && youFollowThem || user.settings.allowMessages;
+        
+        if (!canMessage) {
+            alert('Message request sent (they need to approve).');
+            setMessageInput('');
+            return;
+        }
+
         setMessages(prev => ({
             ...prev,
             [selectedUser]: [

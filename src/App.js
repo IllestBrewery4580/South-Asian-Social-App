@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import './assets/styles.css';
 
 // Pages
 import Home from './pages/Home.js'
@@ -35,7 +36,7 @@ export default function App() {
     // Navbar
     React.createElement(
       'nav',
-      { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', background: '#f4f4f4' } },
+      { className: 'navbar' },
       React.createElement('h2', null, 'Uma Social'),
       React.createElement(
         'div',
