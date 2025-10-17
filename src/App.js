@@ -17,7 +17,9 @@ import Navbar from './components/Navbar.js'
 export default function App() {
   const [page, setPage] = useState('home')
   const [viewedUser, setViewedUser] = useState(null); // null = your profile, string = other user
+
   const navigate = (target, user = null) => {
+    console.log('Navigating to:', target);
     setPage(target)
     setViewedUser(user); // set the user when visiting their profile
   };
@@ -29,6 +31,8 @@ export default function App() {
   else if (page === 'register') currentPage = React.createElement(Register, { navigate })
   else if (page === 'settings') currentPage = React.createElement(Settings, { navigate })
   else if (page === 'dm') currentPage = React.createElement(DM, { navigate });
+
+  // Render everything
   return React.createElement(
     'div',
     { className: 'app-container', style: { paddingTop: '60px' } }, // South Asian styled background
@@ -42,8 +46,9 @@ export default function App() {
         'div',
         null,
         React.createElement('button', { onClick: () => navigate('home'), style: { marginRight: '10px' } }, 'Home'),
-        React.createElement('button', { onClick: () => navigate('live'), style: { marginRight: '10px' } }, 'Explore'),
-        React.createElement('button', { onClick: () => navigate('profile') }, 'Profile')
+        React.createElement('button', { onClick: () => navigate('live'), style: { marginRight: '10px' } }, 'Go Live'),
+        React.createElement('button', { onClick: () => navigate('profile'), style: { marginRight: '10px' } }, 'Profile'),
+        React.createElement('button', { onClick: () => navigate('dm'), style: { marginLeft: '10px' } }, 'Direct Messages')
       )
     ),
 
